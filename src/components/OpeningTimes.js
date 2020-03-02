@@ -10,7 +10,7 @@ export default function OpeningTimes() {
     let hour = now.getHours(); // 0 = 12am, 1 = 1am, ... 18 = 6pm
 
     // check if it's a weekday between 9am and 6pm
-    if (dayOfWeek > 0 && dayOfWeek < 6 && hour >= 8 && hour < 12) {
+    if (dayOfWeek > 0 && dayOfWeek < 6 && hour >= 8 && hour < 17) {
       setOpenclose("Open!");
     } else {
       setOpenclose("Closed!");
@@ -18,7 +18,6 @@ export default function OpeningTimes() {
   };
 
   setInterval(checkTime, 1000);
-  console.log(setInterval(checkTime, 1000));
-  //checkTime();
+  //console.log(setInterval(checkTime, 1000));
   return <span>{openclose}</span>;
 }
