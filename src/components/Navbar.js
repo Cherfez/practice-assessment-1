@@ -12,7 +12,7 @@ export default function Navbar() {
         </li>
         <li>
           <NavLink exact={true} activeStyle={{ color: "green" }} to="/duty">
-            Doctors on Duty
+            Doctors Schedule
           </NavLink>
         </li>
         <li>
