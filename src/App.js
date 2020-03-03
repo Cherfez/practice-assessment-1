@@ -21,4 +21,9 @@ function App() {
   );
 }
 
+// TO-DO:
+// DoctorDatabase different comp (was, but how to cross reference?) CALLBACK PROPS!
+// Show more button to make it work
+// Add styling
+
 export default App;
