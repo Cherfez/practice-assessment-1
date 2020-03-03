@@ -19,5 +19,5 @@ export default function OpeningTimes() {
 
   setInterval(checkTime, 1000);
   //console.log(setInterval(checkTime, 1000));
-  return <span>{openclose}</span>;
+  return <span className="openclose">{openclose}</span>;
 }

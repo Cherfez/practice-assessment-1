@@ -1,23 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import PatientInfo from "../PatientInfo";
+import PatientInfo from "./PatientInfo";
 
 export default function DoctorDatabase() {
   const [doctor, setDoctor] = useState([]);
-  const [sort_by, set_sort_by] = useState("");
-
-  //checks for dr id value
-  function doctorWasChanged(e) {
-    console.log("event", e.target.value);
-    set_sort_by(e.target.value);
-  }
+  const [patients, setPatients] = useState([]);
+  const [selectedDocterId, set_selectedDocterId] = useState(null);
 
   async function getDoctor() {
     try {
       const response = await axios.get(
         "https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/doctors"
       );
-      console.log("doctors", response.data);
 
       setDoctor(response.data);
     } catch (error) {
@@ -28,11 +22,42 @@ export default function DoctorDatabase() {
     getDoctor();
   }, []);
 
+  async function getPatients() {
+    try {
+      const response = await axios.get(
+        "https://my-json-server.typicode.com/Codaisseur/patient-doctor-data/patients"
+      );
+
+      setPatients(response.data);
+    } catch (error) {
+      console.log("error message", error.message);
+    }
+  }
+  useEffect(() => {
+    getPatients();
+  }, []);
+
+  //checks for dr id value
+  function doctorWasChanged(e) {
+    console.log(e.target.value);
+    set_selectedDocterId(e.target.value);
+  }
+
+  const filteredPatients = patients.filter(patient => {
+    return patient.doctorId == selectedDocterId;
+  });
+
+  //sorting on last name
+  const sorting = (a, b) => {
+    return a.lastName.localeCompare(b.lastName);
+  };
+  filteredPatients.sort(sorting);
+
   return (
     <div>
       <h1>Patient Database</h1>
       <label>Doctor</label>
-      <select onChange={doctorWasChanged}>
+      <select onChange={doctorWasChanged} id="select">
         {doctor.map(doc => {
           return (
             <option value={doc.id} key={doc.id}>
@@ -41,7 +66,11 @@ export default function DoctorDatabase() {
           );
         })}
       </select>
-      <PatientInfo />;
+      <div>
+        {filteredPatients.map(patient => {
+          return <PatientInfo patient={patient} key={patient.id} />;
+        })}
+      </div>
     </div>
   );
 }

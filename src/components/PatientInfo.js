@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function PatientInfo(props) {
   const [show, setShow] = useState(false);
@@ -19,7 +19,7 @@ export default function PatientInfo(props) {
   }
 
   return (
-    <div className="show-patients" key={props.patient.id}>
+    <div className="show-patients" id="patients" key={props.patient.id}>
       <div value={props.patient.doctorId} key={props.patient.id}>
         <p>name: {`${props.patient.firstName}  ${props.patient.lastName}`}</p>
         <p>id: {props.patient.id}</p>
