@@ -1,0 +1,14 @@
+nav ul {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+}
+
+.navlink {
+  text-decoration: underline;
+  color: black;
+}
