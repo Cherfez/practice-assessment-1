@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import OpeningTimes from "./OpeningTimes";
+import "./DutyPage.css";
 
 export default function DutyPage() {
   const [doctors, setDoctors] = useState([]);
@@ -27,6 +28,7 @@ export default function DutyPage() {
 
   return (
     <div>
+      <h1>Who is on Duty?</h1>
       <p>{load}</p>
       <table>
         <thead>
@@ -59,7 +61,10 @@ export default function DutyPage() {
         <p>
           We are: <OpeningTimes />
         </p>
-        <p>To make an appointment, please call: 020-555 5555</p>
+        <p>
+          To make an appointment <br />
+          call: 020-555 5555
+        </p>
       </div>
     </div>
   );
