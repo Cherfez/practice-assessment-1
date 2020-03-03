@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./SignUp.css";
 
 export default function SignUp() {
   const [firstName, setFirstName] = useState("");
@@ -23,9 +24,11 @@ export default function SignUp() {
 
   return (
     <div>
+      <h1>Patient Signup</h1>
       <form onSubmit={submitHandle}>
-        <label>First name</label>
+        <label className="l1">First name</label>
         <input
+          className="i1"
           type="text"
           value={firstName}
           onChange={event => {
@@ -33,45 +36,45 @@ export default function SignUp() {
             setFirstName(event.target.value);
           }}
         />{" "}
-        <br />
-        <label>Last name</label>
+        <label className="l2">Last name</label>
         <input
+          className="i2"
           type="text"
           value={lastName}
           onChange={event => {
             setLastName(event.target.value);
           }}
         />{" "}
-        <br />
-        <label>Birthdate</label>
+        <label className="l3">Birthdate</label>
         <input
+          className="i3"
           type="date"
           value={dateOfBirth}
           onChange={event => {
             setDateOfBirth(event.target.value);
           }}
         />{" "}
-        <br />
-        <label>Email</label>
+        <label className="l4">Email</label>
         <input
+          className="i4"
           type="email"
           value={email}
           onChange={event => {
             setEmail(event.target.value);
           }}
         />{" "}
-        <br />
-        <label>Phonenr.</label>
+        <label className="l5">Phonenr.</label>
         <input
+          className="i5"
           type="number"
           value={phone}
           onChange={event => {
             setPhone(event.target.value);
           }}
         />{" "}
-        <br />
-        <label>Gender</label>
+        <label className="l6">Gender</label>
         <select
+          className="i6"
           value={gender}
           onChange={event => {
             setGender(event.target.value);
@@ -81,7 +84,6 @@ export default function SignUp() {
           <option value="female">Female</option>
           <option value="other">Other</option>
         </select>
-        <br />
         <br />
         <input type="submit" value="submit" />
       </form>
